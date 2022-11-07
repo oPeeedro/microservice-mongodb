@@ -13,6 +13,7 @@
         <module>inventory-service</module>
         <module>order-service</module>
         <module>product-server</module>
+        <module>configuration-server</module>
     </modules>
 
     <properties>
