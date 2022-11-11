@@ -14,5 +14,12 @@ public class ProductServiceApplication {
 /*<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
-		</dependency>*/
+		</dependency>
+
+		eureka.instance.prefer-ip-address=true
+eureka.client.fetch-registry=true
+eureka.client.register-with-eureka=true
+
+
+		*/
 }
