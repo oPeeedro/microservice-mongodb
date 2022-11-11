@@ -19,7 +19,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private final AppUserService service;
     @Autowired
-    private final PasswordEncoder passwordEncoder;
+    private final BCryptPasswordEncoder passwordEncoder;
 
     @Value("${app.eureka.username}")
     private String username;
@@ -27,7 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private String password;
 
 
-    public WebSecurityConfig(AppUserService service, PasswordEncoder passwordEncoder) {
+    public WebSecurityConfig(AppUserService service, BCryptPasswordEncoder passwordEncoder) {
         this.service = service;
         this.passwordEncoder = passwordEncoder;
     }
@@ -43,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(daoAuthenticationProvider())
+        auth//authenticationProvider(daoAuthenticationProvider())
                 .inMemoryAuthentication()
                 .passwordEncoder(passwordEncoder())
                 .withUser(username).password(passwordEncoder.encode(password))
