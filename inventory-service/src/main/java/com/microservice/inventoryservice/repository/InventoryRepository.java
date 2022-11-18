@@ -1,12 +1,11 @@
 package com.microservice.inventoryservice.repository;
 
-import com.google.common.base.Optional;
 import com.microservice.inventoryservice.model.Inventory;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
-import java.util.UUID;
 
-public interface InventoryRepository extends JpaRepository<Inventory, UUID> {
-    List<Inventory> findByIdIn(List<String> id);
+public interface InventoryRepository extends MongoRepository<Inventory, String> {
+    List<Inventory> findAllByRestaurantId(@Param("restaurantId") String restaurantId);
 }

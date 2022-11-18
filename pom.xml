@@ -12,7 +12,7 @@
         <module>eureka-server</module>
         <module>inventory-service</module>
         <module>order-service</module>
-        <module>product-server</module>
+        <module>product-service</module>
         <module>configuration-server</module>
     </modules>
 

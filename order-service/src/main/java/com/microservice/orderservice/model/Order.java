@@ -1,25 +1,38 @@
 package com.microservice.orderservice.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.*;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
 import java.util.List;
 import java.util.UUID;
 
-@Entity
+/*@Entity
 @Table(name = "orders")
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@AllArgsConstructor*/
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
+@Data
+@Document
 public class Order {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
-    private String orderNumber;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<OrderLineItems> orderLineItemsList;
+    private String id;
+
+    //@Embedded
+    private List<MenuItemQuantity> menuItemList;
+
+    //@Embedded
+    private UserInfo userInfo;
+
+    private String restaurantId;
+    private int totalPrice;
+    private long orderTime;
+    private String specialNote;
+    private long deliveryTime;
+    private String paymentId;
 }
